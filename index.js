@@ -34,7 +34,7 @@ const server = app.listen(process.env.PORT, () =>{
 });
 const io = socket(server, {
   cors: {
-    origin: process.env.NODE_ENV == "production" ? "https://chatty-app-k276.onrender.com/" : "http://localhost:3000",
+    origin: process.env.NODE_ENV == "production" ? "https://chatty-app-k276.onrender.com" : "http://localhost:3000",
     credentials: true,
   },
 });
