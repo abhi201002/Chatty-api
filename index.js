@@ -49,7 +49,14 @@ io.on("connection", (socket) => {
   socket.on("send-msg", (data) => {
     const sendUserSocket = onlineUsers.get(data.to);
     if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+      console.log("Message from ", data.from)
+      socket.to(sendUserSocket).emit(`msg-recieve-${data.from}`, data);
     }
   });
+  socket.on("typing", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if(sendUserSocket){
+      socket.to(sendUserSocket).emit(`typing-${data.from}`,"typing")
+    } 
+  })
 });
