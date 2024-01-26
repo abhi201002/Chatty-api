@@ -59,4 +59,10 @@ io.on("connection", (socket) => {
       socket.to(sendUserSocket).emit(`typing-${data.from}`,"typing")
     } 
   })
+  socket.on("send-request", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if(sendUserSocket){
+      socket.to(sendUserSocket).emit(`rec-request`,{from: data.from, img: data.img, id: data.id})
+    } 
+  })
 });

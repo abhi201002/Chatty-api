@@ -35,8 +35,8 @@ const userSchema = new mongoose.Schema({
     default: "",
   },
   friends:{
-    type: [String],
-    default: []
+    type: [{id: {type: String, required: true}, lastMess: {type: Date, required: true, default: undefined}}],
+    default:[]
   },
   request:{
     type: [String],
